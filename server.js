@@ -32,4 +32,15 @@ app.post("/users", async (req, res) => {
   }
 });
 
+app.delete("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const users = await User.destroy({ where: { id } });
+    return res.json(users);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
+  }
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

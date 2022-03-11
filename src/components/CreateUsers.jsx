@@ -28,6 +28,7 @@ function CreateUsers() {
           type="text"
           name="firstName"
           placeholder="First Name"
+          autoFocus
         />
       </label>
       <br />
