@@ -32,10 +32,23 @@ app.post("/users", async (req, res) => {
   }
 });
 
+
 app.delete("/users/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const users = await User.destroy({ where: { id } });
+    return res.json(users);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
+  }
+})
+
+app.put("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const { data } = req.body;
+  try {
+    const users = await User.update(data, { where: { id } });
     return res.json(users);
   } catch (error) {
     console.log(error);

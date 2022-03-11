@@ -52,7 +52,9 @@ function CreateUsers() {
         />
       </label>
       <br />
-      <button type="submit">Submit</button>
+      <button disabled={!users.firstName} type="submit">
+        Submit
+      </button>
     </form>
   );
 }

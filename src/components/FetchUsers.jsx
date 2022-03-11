@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import DeleteUser from "./DeleteUser";
+import UpdateUser from "./UpdateUser";
 
 function FetchUsers() {
   const [users, setUsers] = useState([]);
@@ -16,7 +17,6 @@ function FetchUsers() {
     flex: {
       display: "flex",
       flexDirection: "column",
-      gap: "10px",
     },
     border: {
       border: "1px solid lightgray",
@@ -27,11 +27,14 @@ function FetchUsers() {
     <div key={user.id} style={{ ...styles.border, ...styles.flex }}>
       <div>
         <DeleteUser id={user.id} setUsers={setUsers} users={users} />
-        <h3>{user.firstName}</h3>
       </div>
 
-      <p>{user.lastName}</p>
-      <p>{user.email}</p>
+      <div>
+        <strong>{user.firstName}</strong>
+      </div>
+      <div>{user.lastName}</div>
+      <div>{user.email}</div>
+      <UpdateUser id={user.id} />
     </div>
   ));
 
